@@ -2,10 +2,7 @@
 <head>
   <title>Todo App</title>
   <link rel="stylesheet" href="/static/css/main.css" type="text/css" />
-  <link
-    href="https://fonts.googleapis.com/css?family=Baloo+Bhai|Candal|Chewy&display=swap"
-    rel="stylesheet"
-  />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
   <link
     rel="stylesheet"
     href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
@@ -18,24 +15,31 @@
     <h2>Todo List</h2>
     <div class="todo">
       <form action="/" method="post" class="todo-header">
-        <input type="text" name="content" >
-        <button type="submit"><span class="fas fa-plus"></span></button>
+        <input type="text" name="content" />
+        <button type="submit" class="sub-btn"><span class="fas fa-plus"></span></button>
       </form>
-     
+
       <ul class="todo-list">
-        <% todoTasks.forEach(details => { %>
+        <% todoTasks.forEach(todo => { %>
         <li class="todo-list-item">
-        <div class="todo-list-item-name"><%= details.content %></div>
-        <a href="/edit/<%= details._id %>" class="edit">
-        <span class="fas fa-edit"></span>
-        </a>
-        <a href="/remove/<%= details._id %>" class="remove">
-        <span class="fas fa-times"></span>
-        </a>
+          <div class="todo-list-item-name"><%= todo.content %></div>
+          <a href="/edit/<%= todo._id %>" class="edit">
+            <span class="fas fa-edit"></span>
+          </a>
+          <a href="/remove/<%= todo._id %>" class="remove">
+            <span class="fas fa-trash"></span>
+            
+          </a>
         </li>
         <% }) %>
-        </ul>
-     
+      </ul>
     </div>
   </div>
 </body>
+
+
+<!-- todoTasks.sort(function(a,b){
+  return new Date(a.date) - new Date(b.date)
+})
+
+console.log(todoTasks) -->
