@@ -9,7 +9,7 @@ router.get("/", async (req, res) => {
 
     try {
       const {page=1, limit=5} =req.query;
-      let result = await TodoTask.find().sort({date:1}).limit(limit * 1).skip((page -1) * limit);
+      let result = await TodoTask.find().limit(limit * 1).skip((page -1) * limit);
       
       console.log(result);
       res.render("todo.ejs", { todoTasks: result });
@@ -62,6 +62,21 @@ router.get("/", async (req, res) => {
       res.redirect("/");
     });
   });
+
+  router.get("/sort/:id", async (req, res) => {
+    
+        if (req.params.id == "content") {
+            const data = await TodoTask.find().sort({ content : 1});
+            res.render("todo.ejs", {todotasks: " ", id: 0, todoTasks: data, error: " ", csslink: "../../css/main.css"})
+
+        } else if (req.params.id == "date") {
+            const data = await TodoTask.find().sort({ date : 1});
+            res.render("todo.ejs", {todotasks: " ", id: 0, todoTasks: data, error: " ", csslink: "../../css/main.css"})
+        }
+        
+    
+})
+
   
 
   module.exports = router;

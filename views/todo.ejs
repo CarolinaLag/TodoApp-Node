@@ -18,7 +18,11 @@
         <input type="text" name="content" />
         <button type="submit" class="sub-btn"><span class="fas fa-plus"></span></button>
       </form>
+       
       <ul class="todo-list">
+        
+        <%- include("./sortTodo.ejs") %>
+
         <% todoTasks.forEach(todo => { %>
         <li class="todo-list-item">
           <div class="todo-list-item-name"><%= todo.content %></div>
