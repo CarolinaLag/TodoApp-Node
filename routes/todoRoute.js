@@ -3,14 +3,17 @@ const router = express.Router();
 //models
 const TodoTask = require("../models/TodoTask");
 
+
 // GET METHOD
 router.get("/", async (req, res) => {
+
     try {
-      let result = await TodoTask.find();
-  
+      const {page=1, limit=5} =req.query;
+      let result = await TodoTask.find().sort({date:1}).limit(limit * 1).skip((page -1) * limit);
+      
       console.log(result);
-  
       res.render("todo.ejs", { todoTasks: result });
+
     } catch (err) {
       console.log(err);
       // res.render("todo.ejs", { todoTasks: ["hej hej"] });
@@ -36,16 +39,16 @@ router.get("/", async (req, res) => {
   });
   
   //UPDATE
-  router.get("/edit/:id", (req, res) => {
+  router.get("/edit/:id", async (req, res) => {
       const id = req.params.id;
-      TodoTask.find({}, (err, tasks) => {
+      await TodoTask.find({}, (err, tasks) => {
         res.render("todoEdit.ejs", { todoTasks: tasks, idTask: id });
       });
     })
    
-    router.post("/edit/:id",  (req, res) => {
+    router.post("/edit/:id", async  (req, res) => {
       const id = req.params.id;
-      TodoTask.findByIdAndUpdate(id, { content: req.body.content}, (err) => {
+      await TodoTask.findByIdAndUpdate(id, { content: req.body.content}, (err) => {
         if (err) return res.send(500, err);
         res.redirect("/");
       });
