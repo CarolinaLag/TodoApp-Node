@@ -8,8 +8,8 @@ const TodoTask = require("../models/TodoTask");
 router.get("/", async (req, res) => {
 
     try {
-      const {page=1, limit=5} =req.query;
-      let result = await TodoTask.find().limit(limit * 1).skip((page -1) * limit);
+      // const {page=1, limit=5} =req.query; .limit(limit * 1).skip((page -1) * limit);
+      let result = await TodoTask.find();
       
       console.log(result);
       res.render("todo.ejs", { todoTasks: result });
@@ -67,14 +67,22 @@ router.get("/", async (req, res) => {
     
         if (req.params.id == "content") {
             const data = await TodoTask.find().sort({ content : 1});
-            res.render("todo.ejs", {todotasks: " ", id: 0, todoTasks: data, error: " ", csslink: "../../css/main.css"})
+            res.render("todo.ejs", {todoTasks: data})
 
         } else if (req.params.id == "date") {
             const data = await TodoTask.find().sort({ date : 1});
-            res.render("todo.ejs", {todotasks: " ", id: 0, todoTasks: data, error: " ", csslink: "../../css/main.css"})
+            res.render("todo.ejs", {todoTasks: data})
         }
         
+})
+
+router.get("/pagination/:id", async (req, res) => {
     
+    req.params.id == "content"
+    const {page=1, limit=5} =req.query;
+      const data = await TodoTask.find().limit(limit * 1).skip((page -1) * limit);
+      res.render("todo.ejs", {todoTasks: data})
+
 })
 
   
