@@ -2,7 +2,10 @@
 <head>
   <title>Todo App</title>
   <link rel="stylesheet" href="/static/css/main.css" type="text/css" />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+    rel="stylesheet"
+  />
   <link
     rel="stylesheet"
     href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
@@ -15,26 +18,27 @@
     <h2>Todo List</h2>
     <div class="todo">
       <form action="/" method="post" class="todo-header">
-        <input type="text" name="content" />
-        <button type="submit" class="sub-btn"><span class="fas fa-plus"></span></button>
+        <input type="text" required minlength="1" maxlength="20" name="content" />
+        <button type="submit" class="sub-btn">
+          <span class="fas fa-plus"></span>
+        </button>
       </form>
-       
-      <ul class="todo-list">
-        
-        <%- include("./sortTodo.ejs") %>
 
-        <% todoTasks.forEach(todo => { %>
+      <ul class="todo-list">
+        <%- include("./sortTodo.ejs") %> <% todoTasks.forEach(todo => { %>
         <li class="todo-list-item">
           <div class="todo-list-item-name"><%= todo.content %></div>
-          <div class="todo-list-item-name"><%= todo.date.toString().split(' ').splice(0, 5); %></div>
-
-          <a href="/edit/<%= todo._id %>" class="edit">
-            <span class="fas fa-edit"></span>
-          </a>
-          <a href="/remove/<%= todo._id %>" class="remove">
-            <span class="fas fa-trash"></span>
-            
-          </a>
+          <div class="todo-list-item-name">
+            <%= todo.date.toString().split(' ').splice(0, 5); %>
+          </div>
+          
+            <a href="/edit/<%= todo._id %>" class="edit">
+              <span class="fas fa-edit"></span>
+            </a>
+            <a href="/remove/<%= todo._id %>" class="remove">
+              <span class="fas fa-trash"></span>
+            </a>
+          
         </li>
         <% }) %>
       </ul>
@@ -42,10 +46,3 @@
     </div>
   </div>
 </body>
-
-
-<!-- todoTasks.sort(function(a,b){
-  return new Date(a.date) - new Date(b.date)
-})
-
-console.log(todoTasks) -->

@@ -25,7 +25,7 @@
         <% todoTasks.forEach(todo => { %> <% if (todo._id == idTask) { %>
         <li class="todo-list-item">
           <form action="/edit/<%= todo._id %>" method="post">
-            <input type="text" value="<%= todo.content %>" name="content" />
+            <input type="text" required minlength="1" maxlength="20" value="<%= todo.content %>" name="content" />
             <button type="submit">Confirm</button>
             <a href="/" class="cancel">Cancel</a>
           </form>

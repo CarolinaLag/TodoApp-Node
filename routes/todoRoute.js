@@ -8,15 +8,15 @@ const TodoTask = require("../models/TodoTask");
 router.get("/", async (req, res) => {
 
     try {
-      // const {page=1, limit=5} =req.query; .limit(limit * 1).skip((page -1) * limit);
-      let result = await TodoTask.find();
+      const {page=1, limit=5} =req.query;
+      // .limit(limit * 1).skip((page -1) * limit);
+      let result = await TodoTask.find().limit(limit *1).skip((page-1)* limit);
       
       console.log(result);
       res.render("todo.ejs", { todoTasks: result });
 
     } catch (err) {
       console.log(err);
-      // res.render("todo.ejs", { todoTasks: ["hej hej"] });
     }
   });
   
@@ -40,11 +40,13 @@ router.get("/", async (req, res) => {
   
   //UPDATE
   router.get("/edit/:id", async (req, res) => {
+    const {page=1, limit=5} =req.query;
       const id = req.params.id;
-      await TodoTask.find({}, (err, tasks) => {
+       await TodoTask.find({}, (err, tasks) => {
         res.render("todoEdit.ejs", { todoTasks: tasks, idTask: id });
-      });
+      }).limit(limit *1).skip((page-1)* limit);
     })
+
    
     router.post("/edit/:id", async  (req, res) => {
       const id = req.params.id;
@@ -76,12 +78,21 @@ router.get("/", async (req, res) => {
         
 })
 
+let x = 1;
+let page = 1;
+let limit = 5;
+
 router.get("/pagination/:id", async (req, res) => {
     
+  x--;
+  let a = { page, limit };
     req.params.id == "content"
-    const {page=1, limit=5} =req.query;
-      const data = await TodoTask.find().limit(limit * 1).skip((page -1) * limit);
+    a = req.query;
+    // const {page=2, limit=5} =req.query;
+      const data = await TodoTask.find().limit(limit * 1).skip((page - x) * limit);
       res.render("todo.ejs", {todoTasks: data})
+    console.log(x);
+    return;
 
 })
 

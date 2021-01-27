@@ -1,0 +1,116 @@
+@import "./variables/variables";
+@import "./resets";
+@import "./variables/mixins";
+
+body {
+    background: #b4d2d4;
+    background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
+    font-family: 'Roboto', sans-serif;
+  }
+  .todo-container {
+    color:black;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    padding: 20px;
+    width: 90%;
+    transform: translate(-50%, -50%);
+    background: rgba(94, 121, 136, 0.1);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @include desktop {
+        width: 40%;
+    }
+    h2 {
+        padding: 10px;
+        font-size: 2em;
+    }
+      .todo {
+        width: 80%;
+        
+          .todo-header input {
+            width: 73%;
+            border: none;
+            border-radius: 5px;
+            height: 35px;
+            
+            .sub-btn {
+                color: white;
+                border: none;
+                border-radius: 20%;
+                cursor: pointer;
+                padding: 5px;
+                background-color: rgb(94, 142, 182);
+                margin: 2px;
+              }
+              .fas  {
+                font-size: 18px;
+              }
+          }
+          
+          .todo-list {
+            width: 95%;
+            list-style: none;
+            .todo-list-item {
+                padding: 10px;
+                margin-top: 10px;
+                border: none;
+                border-radius: 5px;
+                background: rgba(0, 0, 0, 0.3);
+                display: flex;
+                flex-direction: row;
+                form {
+                    width: 100%;
+                    display: flex;
+                }
+                input {
+                    flex-grow: 2;
+                    margin-right: 20px;
+                    border: none;
+                    border-radius: 5px;
+                }
+                button {
+                    color: white;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    padding: 5px;
+                    background-color: rgb(51, 212, 100);
+                }
+                .cancel {
+                    color: white;
+                    text-decoration: none;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    padding: 5px;
+                    background-color: rgb(223, 43, 43);
+                    
+                }
+                div {
+                    flex-grow: 2;
+                }
+                .edit  {
+                    color: white;
+                    margin-right: 10px;
+                    cursor: pointer;
+                    text-decoration: none;
+                }
+                .remove {
+                    color: rgb(243, 96, 96);
+                    margin-right: 5px;
+                    cursor: pointer;
+                    text-decoration: none;
+                }
+              }
+          }
+         
+          
+          
+      }
+      
+      
+  }
+  
