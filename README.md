@@ -12,12 +12,15 @@ Examples of functionality of the Todo List:
 ---
 
 ## Installation
+Use following command to install:
 
-Make a new folder
+```
+npm i
 
-1. Clone repo and start 'index.html'
-2. run npm install
-3. run npm start
+```
+## How to run
+-Clone the repo and install all neccessary dependencies
+-Run `npm start`
 
 ## Naming conventions
 
@@ -35,12 +38,21 @@ Make a new folder
 ### Classes
 
 - Class names should use **PascalCase**
-- Eg ´class Todo´
+* Eg `class Todo`
 
 ## Project structure
 
-- ProjectFolder/ _-Project root/_ index and html files are found here
-- css/ _-Css folder/_-All css-styling are found here
-- scss/ _-Scss folder/_-All scss-styling are found here
-- js/ _-Javascript folder/_-All JavaScript logic are found here
-- view/ _-EJS folder/_-All EJS logic are found here
+```
+Project root
+├── models
+├── └── js-files
+├── public/css
+├── └── css styling
+├── routes
+├── scss
+├── └── scss styling
+├── views
+├── └── ejs-files
+├── node_modules
+│   └── modules
+```

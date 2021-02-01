@@ -65,17 +65,19 @@ router.get("/", async (req, res) => {
     });
   });
 
-  router.get("/sort/:id", async (req, res) => {
-    
-        if (req.params.id == "content") {
-            const data = await TodoTask.find().sort({ content : 1});
-            res.render("todo.ejs", {todoTasks: data})
 
-        } else if (req.params.id == "date") {
-            const data = await TodoTask.find().sort({ date : 1});
-            res.render("todo.ejs", {todoTasks: data})
-        }
-        
+router.get("/sort/:id", async (req, res) => {
+
+   const {page=1, limit=5} =req.query;
+    
+  if (req.params.id == "content") {
+      const data = await TodoTask.find().sort({ content : 1}).limit(limit *1).skip((page-1)* limit);
+      res.render("todo.ejs", {todoTasks: data})
+
+  } else if (req.params.id == "date") {
+      const data = await TodoTask.find().sort({ date : 1}).limit(limit *1).skip((page-1)* limit);
+      res.render("todo.ejs", {todoTasks: data})
+  }
 })
 
 let x = 1;
@@ -83,7 +85,7 @@ let page = 1;
 let limit = 5;
 
 router.get("/pagination/:id", async (req, res) => {
-    
+  
   x--;
   let a = { page, limit };
     req.params.id == "content"
