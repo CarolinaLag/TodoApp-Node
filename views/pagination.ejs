@@ -1,3 +1,13 @@
 <div class="pagination">
-    <a href="/pagination/content" class="page">Next page</a>
+
+    <% if(typeof totalPages !== undefined ){ if(totalPages !== dataToShow/taskPerReq) { %>
+
+        <a href="/?page=<%=(dataToShow/taskPerReq)+1%>"class="page">Show more</a>
+
+   <% }else { %>
+
+        <a href="/?page=<%=(dataToShow/taskPerReq)-1%>"class="page">Show less</a>
+
+    
+    <% }} %>
 </div>
