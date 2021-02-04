@@ -18,14 +18,14 @@
     <h2 class="todo-heading">Todo List</h2>
     <div class="todo">
       <form action="" method="post" class="todo-header">
-        <input type="text" class="todo-input" name="content" />
+        <input type="text" class="todo-input" required minlength="1" maxlength="20" name="content" />
         <button type="submit" class="sub-btn"><span class="fas fa-plus"></span></button>
       </form>
       <ul class="todo-list">
         <% todoTasks.forEach(todo => { %> <% if (todo._id == idTask) { %>
         <li class="todo-list-item">
           <form action="/edit/<%= todo._id %>" method="post">
-            <input type="text" required minlength="1" maxlength="10" value="<%= todo.content %>" name="content" />
+            <input type="text"  value="<%= todo.content %>" required minlength="1" maxlength="20"name="content" />
             <button type="submit"><i class="fas fa-check"></i></button>
             <a href="/" class="cancel"><i class="fas fa-times"></i></a>
           </form>

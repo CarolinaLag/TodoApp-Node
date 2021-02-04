@@ -2,12 +2,14 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+ 
 }
 body {
   /* background: #b4d2d4; */
   background: #4b5055;
   background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
   font-family: "Roboto", sans-serif;
+
 }
 .todo-container {
   color: white;

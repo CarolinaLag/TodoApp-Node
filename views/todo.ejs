@@ -18,18 +18,20 @@
     <h2 class="todo-heading">Todo List</h2>
     <div class="todo">
       <form action="/" method="post" class="todo-header">
-        <input type="text" class="todo-input "required minlength="1" maxlength="10" name="content" />
+        <input type="text" class="todo-input " name="content" />
         <button type="submit" class="sub-btn">
           <span class="fas fa-plus"></span>
         </button>
       </form>
 
       <ul class="todo-list">
-        <%- include("./sortTodo.ejs") %> <% todoTasks.forEach(todo => { %>
+        <%- include("./sortTodo.ejs") %> 
+        
+        <% todoTasks.forEach(todo => { %>
         <li class="todo-list-item">
           <div class="todo-list-item-name"><%= todo.content %></div>
           <div class="todo-list-item-name">
-            <%= todo.date.toString().split(' ').splice(0, 4); %>
+            <%= todo.date.toString().split(' ').splice(0, 4);%>
           </div>
           
             <a href="/edit/<%= todo._id %>" class="edit">
