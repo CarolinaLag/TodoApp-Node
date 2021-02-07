@@ -34,7 +34,7 @@
             <%= todo.date.toString().split(' ').splice(0, 4);%>
           </div>
           
-            <a href="/edit/<%= todo._id %>" class="edit">
+            <a href="/edit/<%= todo._id %>?page=<%= page %>&&sorted=<%= sorted %>" class="edit">
               <span class="fas fa-edit"></span>
             </a>
             <a href="/remove/<%= todo._id %>" class="remove">

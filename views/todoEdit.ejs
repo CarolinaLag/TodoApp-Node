@@ -33,7 +33,7 @@
         <% } else { %>
         <li class="todo-list-item">
           <div class="todo-list-item-name"><%= todo.content %></div>
-          <a href="/edit/<%= todo._id %>" class="edit">
+          <a href="/edit/<%= todo._id%>?page=<%= page %>&&sorted=<%= sorted %>" class="edit">
             <span class="fas fa-edit"></span>
           </a>
           <a href="/remove/<%= todo._id %>" class="remove">
