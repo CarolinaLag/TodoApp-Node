@@ -14,29 +14,47 @@
   />
 </head>
 <body>
-  <div class="todo-container">
-    <h2 class="todo-heading">Todo List</h2>
+  <div class="todoContainer">
+    <h2 class="todoHeading">Todo List</h2>
     <div class="todo">
-      <form action="" method="post" class="todo-header">
-        <input type="text" class="todo-input" required minlength="1" maxlength="20" name="content" />
-        <button type="submit" class="sub-btn"><span class="fas fa-plus"></span></button>
+      <form action="" method="post" class="todoHeader">
+        <input
+          type="text"
+          class="todoInput"
+          required
+          minlength="1"
+          maxlength="20"
+          name="content"
+        />
+        <button type="submit" class="subBtn">
+          <span class="fas fa-plus"></span>
+        </button>
       </form>
-      <ul class="todo-list">
+      <ul class="todoList">
         <% todoTasks.forEach(todo => { %> <% if (todo._id == idTask) { %>
-        <li class="todo-list-item">
+        <li class="todoListItem">
           <form action="/edit/<%= todo._id %>" method="post">
-            <input type="text"  value="<%= todo.content %>" required minlength="1" maxlength="20"name="content" />
+            <input
+              type="text"
+              value="<%= todo.content %>"
+              required
+              minlength="1"
+              maxlength="20"
+              name="content"
+            />
             <button type="submit"><i class="fas fa-check"></i></button>
-            <a href="/" class="cancel"><i class="fas fa-times"></i></a>
+            <a href="/?page=<%= page %>&&sorted=<%= sorted %>" class="cancel"
+              ><i class="fas fa-times"></i
+            ></a>
           </form>
         </li>
         <% } else { %>
-        <li class="todo-list-item">
-          <div class="todo-list-item-name"><%= todo.content %></div>
-          <a href="/edit/<%= todo._id%>?page=<%= page %>&&sorted=<%= sorted %>" class="edit">
+        <li class="todoListItem">
+          <div class="todoName"><%= todo.content %></div>
+          <a href="/edit/<%= todo._id%>?page=<%= page %>" class="edit">
             <span class="fas fa-edit"></span>
           </a>
-          <a href="/remove/<%= todo._id %>" class="remove">
+          <a href="/remove/<%= todo._id %>?page=<%= page %>" class="remove">
             <span class="fas fa-times"></span>
           </a>
         </li>
