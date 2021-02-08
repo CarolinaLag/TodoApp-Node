@@ -14,7 +14,7 @@ router.get("/", async (req, res) => {
   try {
     if (page === 1) {
       let data = await TodoTask.find().limit(dataToShow).sort({ date: sorted });
-      console.log(data);
+      
       res.render("todo.ejs", {
         todoTasks: data,
         page,
@@ -29,7 +29,7 @@ router.get("/", async (req, res) => {
         .limit(5)
         .skip((page - 1) * 5)
         .sort({ date: sorted });
-      console.log(data);
+      
       res.render("todo.ejs", {
         todoTasks: data,
         page,
@@ -53,7 +53,7 @@ router.post("/", async (req, res) => {
 
   try {
     const result = await todoTask.save();
-    console.log(result);
+    
     res.redirect("/");
   } catch (err) {
     res.redirect("/");
@@ -72,7 +72,7 @@ router.get("/edit/:id", async (req, res) => {
   try {
     if (page === 1) {
       let data = await TodoTask.find().limit(dataToShow).sort({ date: sorted });
-      console.log(data);
+      
       res.render("todoEdit.ejs", {
         todoTasks: data,
         idTask: id,
@@ -88,7 +88,7 @@ router.get("/edit/:id", async (req, res) => {
         .limit(5)
         .skip((page - 1) * 5)
         .sort({ date: sorted });
-      console.log(data);
+      
       res.render("todoEdit.ejs", {
         todoTasks: data,
         idTask: id,
