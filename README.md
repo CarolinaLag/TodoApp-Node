@@ -19,8 +19,8 @@ npm i
 
 ```
 ## How to run
--Clone the repo and install all neccessary dependencies
--Run `npm start`
+- Clone the repo and install all neccessary dependencies
+- Run `npm start`
 
 **Note that the URI of the database and localhost port is in a hidden .env file that is not included in this repository, and you will therefore need your own MongoDB Atlas account to use this TodoApp.**
 
